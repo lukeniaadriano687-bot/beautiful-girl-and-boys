@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stella Fashion | Loja Online</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f7f8fc;
+            color: #222;
+        }
+
+        /* CABEÇALHO */
+        header {
+            background: #0b1f4b;
+            color: white;
+            padding: 16px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #72b0ff;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #72b0ff;
+        }
+
+        /* BANNER */
+        .hero {
+            background: linear-gradient(135deg, #0b1f4b, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: white;
+            color: #0b1f4b;
+            padding: 13px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* PESQUISA */
+        .search-area {
+            padding: 25px 5%;
+            text-align: center;
+        }
+
+        .search-area input {
+            width: 90%;
+            max-width: 550px;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        /* PRODUTOS */
+        .section {
+            padding: 35px 5%;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #0b1f4b;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 22px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            background: #eee;
+        }
+
+        .product-info {
+            padding: 16px;
+        }
+
+        .product-info h3 {
+            color: #0b1f4b;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #2563eb;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 13px;
+        }
+
+        .buy {
+            display: block;
+            text-align: center;
+            background: #0b1f4b;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .buy:hover {
+            background: #2563eb;
+        }
+
+        /* SOBRE */
+        .about {
+            background: white;
+            padding: 50px 8%;
+            text-align: center;
+        }
+
+        .about h2 {
+            color: #0b1f4b;
+            margin-bottom: 18px;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: auto;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* CONTACTO */
+        .contact {
+            text-align: center;
+            padding: 50px 20px;
+            background: #eaf2ff;
+        }
+
+        .contact h2 {
+            color: #0b1f4b;
+            margin-bottom: 12px;
+        }
+
+        .contact p {
+            margin-bottom: 15px;
+        }
+
+        .contact a {
+            display: inline-block;
+            margin: 7px;
+            padding: 13px 22px;
+            border-radius: 25px;
+            text-decoration: none;
+            background: #0b1f4b;
+            color: white;
+            font-weight: bold;
+        }
+
+        .contact a:hover {
+            background: #2563eb;
+        }
+
+        .phone {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0b1f4b;
+            margin: 15px 0;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background: #0b1f4b;
+            color: white;
+            text-align: center;
+            padding: 22px;
+            font-size: 14px;
+        }
+
+        /* TELEMÓVEL */
+        @media (max-width: 600px) {
+
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0 5px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 55px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .product img {
+                height: 180px;
+            }
+
+            .product-info {
+                padding: 11px;
+            }
+
+            .product-info h3 {
+                font-size: 15px;
+            }
+
+            .description {
+                font-size: 12px;
+            }
+
+            .price {
+                font-size: 16px;
+            }
+
+            .buy {
+                font-size: 12px;
+                padding: 10px 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- CABEÇALHO -->
+<header>
+
+    <div class="logo">
+        Stella <span>Fashion</span>
+    </div>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+</header>
+
+
+<!-- INÍCIO -->
+<section class="hero" id="inicio">
+
+    <h1>Stella Fashion</h1>
+
+    <p>
+        Elegância, beleza e estilo em um só lugar ✨
+    </p>
+
+    <a href="#produtos" class="hero-button">
+        🛍️ Ver produtos
+    </a>
+
+</section>
+
+
+<!-- PESQUISA -->
+<div class="search-area">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="🔎 Procurar produto..."
+        onkeyup="searchProducts()"
+    >
+
+</div>
+
+
+<!-- PRODUTOS -->
+<section class="section" id="produtos">
+
+    <h2>🛍️ Nossos Produtos</h2>
+
+    <div class="products" id="productList">
+
+
+        <!-- PRODUTO 1 -->
+        <div class="product">
+
+            <img src="produto1.jpg" alt="Produto 1">
+
+            <div class="product-info">
+
+                <h3>Produto 1</h3>
+
+                <p class="description">
+                    Produto elegante e de excelente qualidade.
+                </p>
+
+                <div class="price">
+                    15.000 Kz
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/244958328113?text=Olá!%20Tenho%20interesse%20no%20Produto%201%20da%20Stella%20Fashion."
+                    target="_blank">
+
+                    💬 Comprar
+                </a>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUTO 2 -->
+        <div class="product">
+
+            <img src="produto2.jpg" alt="Produto 2">
+
+            <div class="product-info">
+
+                <h3>Produto 2</h3>
+
+                <p class="description">
+                    Produto moderno e sofisticado.
+                </p>
+
+                <div class="price">
+                    20.000 Kz
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/244958328113?text=Olá!%20Tenho%20interesse%20no%20Produto%202%20da%20Stella%20Fashion."
+                    target="_blank">
+
+                    💬 Comprar
+                </a>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUTO 3 -->
+        <div class="product">
+
+            <img src="produto3.jpg" alt="Produto 3">
+
+            <div class="product-info">
+
+                <h3>Produto 3</h3>
+
+                <p class="description">
+                    Beleza e qualidade para o seu estilo.
+                </p>
+
+                <div class="price">
+                    25.000 Kz
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/244958328113?text=Olá!%20Tenho%20interesse%20no%20Produto%203%20da%20Stella%20Fashion."
+                    target="_blank">
+
+                    💬 Comprar
+                </a>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUTO 4 -->
+        <div class="product">
+
+            <img src="produto4.jpg" alt="Produto 4">
+
+            <div class="product-info">
+
+                <h3>Produto 4</h3>
+
+                <p class="description">
+                    Um toque especial para o seu estilo.
+                </p>
+
+                <div class="price">
+                    30.000 Kz
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/244958328113?text=Olá!%20Tenho%20interesse%20no%20Produto%204%20da%20Stella%20Fashion."
+                    target="_blank">
+
+                    💬 Comprar
+                </a>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUTO 5 -->
+        <div class="product">
+
+            <img src="produto5.jpg" alt="Produto 5">
+
+            <div class="product-info">
+
+                <h3>Produto 5</h3>
+
+                <p class="description">
+                    Qualidade e elegância para todos os momentos.
+                </p>
+
+                <div class="price">
+                    35.000 Kz
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/244958328113?text=Olá!%20Tenho%20interesse%20no%20Produto%205%20da%20Stella%20Fashion."
+                    target="_blank">
+
+                    💬 Comprar
+                </a>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUTO 6 -->
+        <div class="product">
+
+            <img src="produto6.jpg" alt="Produto 6">
+
+            <div class="product-info">
+
+                <h3>Produto 6</h3>
+
+                <p class="description">
+                    Produto bonito e de excelente qualidade.
+                </p>
+
+                <div class="price">
+                    40.000 Kz
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/244958328113?text=Olá!%20Tenho%20interesse%20no%20Produto%206%20da%20Stella%20Fashion."
+                    target="_blank">
+
+                    💬 Comprar
+                </a>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUTO 7 -->
+        <div class="product">
+
+            <img src="produto7.jpg" alt="Produto 7">
+
+            <div class="product-info">
+
+                <h3>Produto 7</h3>
+
+                <p class="description">
+                    Escolha perfeita para quem gosta de estilo.
+                </p>
+
+                <div class="price">
+                    45.000 Kz
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/244958328113?text=Olá!%20Tenho%20interesse%20no%20Produto%207%20da%20Stella%20Fashion."
+                    target="_blank">
+
+                    💬 Comprar
+                </a>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUTO 8 -->
+        <div class="product">
+
+            <img src="produto8.jpg" alt="Produto 8">
+
+            <div class="product-info">
+
+                <h3>Produto 8</h3>
+
+                <p class="description">
+                    Estilo, beleza e qualidade em um só produto.
+                </p>
+
+                <div class="price">
+                    50.000 Kz
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/244958328113?text=Olá!%20Tenho%20interesse%20no%20Produto%208%20da%20Stella%20Fashion."
+                    target="_blank">
+
+                    💬 Comprar
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SOBRE -->
+<section class="about" id="sobre">
+
+    <h2>💙 Sobre a Stella Fashion</h2>
+
+    <p>
+        Bem-vindo à Stella Fashion! ✨
+        Somos uma loja dedicada a oferecer produtos bonitos,
+        modernos e de qualidade. Nosso objetivo é proporcionar
+        aos nossos clientes uma experiência simples, segura
+        e agradável na hora de escolher os seus produtos.
+    </p>
+
+</section>
+
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+
+    <h2>📞 Fale connosco</h2>
+
+    <p>
+        Faça o seu pedido ou tire as suas dúvidas.
+    </p>
+
+    <div class="phone">
+        📱 +244 958 328 113
+    </div>
+
+    <a
+        href="https://wa.me/244958328113"
+        target="_blank">
+
+        💬 WhatsApp
+    </a>
+
+    <a href="tel:+244958328113">
+
+        📞 Ligar
+    </a>
+
+    <a
+        href="https://www.tiktok.com/@Stelasilva60"
+        target="_blank">
+
+        🎵 TikTok
+    </a>
+
+</section>
+
+
+<!-- RODAPÉ -->
+<footer>
+
+    © 2026 Stella Fashion
+    <br>
+    Todos os direitos reservados.
+
+</footer>
+
+
+<!-- PESQUISA -->
+<script>
+
+function searchProducts() {
+
+    let input =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    let products =
+        document
+        .querySelectorAll(".product");
+
+    products.forEach(function(product) {
+
+        let name =
+            product
+            .querySelector("h3")
+            .textContent
+            .toLowerCase();
+
+        let description =
+            product
+            .querySelector(".description")
+            .textContent
+            .toLowerCase();
+
+        if (
+            name.includes(input) ||
+            description.includes(input)
+        ) {
+
+            product.style.display = "";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+  </html>
